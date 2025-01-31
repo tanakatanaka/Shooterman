@@ -14,12 +14,27 @@ public:
 	APlayerInfo();
 
 	UFUNCTION(BlueprintCallable)
+	void SetupPlayerInfo(int _life, int _maxLife);
+
+	UFUNCTION(BlueprintCallable)
 	int GetPlayerLife() { return playerLife; }
+
+	UFUNCTION(BlueprintCallable)
+	int GetMaxPlayerLife() { return playerMaxLife; }
+
+	UFUNCTION(BlueprintCallable)
+	int GetLifePercent() { return  playerLife / playerMaxLife; }
 
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE void UpdateLife(int _playerLife) { playerLife = _playerLife; }
 
+	UFUNCTION(BlueprintCallable)
+	FORCEINLINE void UpdateMaxLife(int _playerMaxLife) { playerMaxLife = _playerMaxLife; }
+
+	
+
 private:
 	int playerLife;
+	int playerMaxLife;
 
 };
