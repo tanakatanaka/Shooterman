@@ -17,6 +17,10 @@ public:
 	void SetupPlayerInfo(int _life, int _maxLife);
 
 	UFUNCTION(BlueprintCallable)
+	void SetupDefuseTime(float _defuseTime);
+
+
+	UFUNCTION(BlueprintCallable)
 	int GetPlayerLife() { return playerLife; }
 
 	UFUNCTION(BlueprintCallable)
@@ -31,10 +35,14 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FORCEINLINE void UpdateMaxLife(int _playerMaxLife) { playerMaxLife = _playerMaxLife; }
 
-	
+	UFUNCTION(BlueprintCallable)
+	bool IsFuelTime(float deltatime);
 
 private:
+	bool isSetupEnd;
+	float defuseTime;
 	int playerLife;
 	int playerMaxLife;
-
+	float startTime;
+	float totalTime;
 };
