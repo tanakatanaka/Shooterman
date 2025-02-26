@@ -39,6 +39,17 @@ class AShootermanCharacter : public ACharacter
 public:
 	AShootermanCharacter();
 	
+	UFUNCTION(BlueprintCallable)
+	bool IsSideView()
+	{
+		return _isSideView;
+	}
+	
+	UFUNCTION(BlueprintCallable)
+	void SetSideView(bool isSideView)
+	{
+		_isSideView = isSideView;
+	}
 
 protected:
 
@@ -55,6 +66,8 @@ protected:
 	
 	// To add mapping context
 	virtual void BeginPlay();
+
+	bool _isSideView;
 
 
 

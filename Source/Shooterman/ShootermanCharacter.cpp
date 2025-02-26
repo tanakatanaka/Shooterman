@@ -41,6 +41,8 @@ AShootermanCharacter::AShootermanCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	_isSideView = false;
 }
 
 void AShootermanCharacter::BeginPlay()
@@ -99,9 +101,15 @@ void AShootermanCharacter::Move(const FInputActionValue& Value)
 		// get right vector 
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
+		AddMovementInput(RightDirection, MovementVector.X);
+		
+		if(_isSideView)
+		{
+			return;
+		}
 		// add movement 
 		AddMovementInput(ForwardDirection, MovementVector.Y);
-		AddMovementInput(RightDirection, MovementVector.X);
+		
 	}
 }
 
